@@ -1,0 +1,30 @@
+.content{
+    font-family: 'Montserrat', sans-serif;
+    
+    
+}
+.font{
+    font-family: 'Montserrat', sans-serif;
+
+}
+.head{
+    font-family: 'Source Code Pro', monospace;
+    color:yellowgreen
+}
+.image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 10px auto;
+    background: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: lighter;
+    letter-spacing: 1px;
+
+}
+.image:hover {
+    box-shadow: 0 45px 45px 10px rgba(0, 0, 0, 0.1);
+  }
+
