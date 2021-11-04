@@ -50,7 +50,7 @@ async function displayRazorpay(e) {
 
   }
 
-  const data = await fetch('http://localhost:1337/razorpay', m).then((k) =>
+  const data = await fetch('https://aahang-backend.herokuapp.com/razorpay', m).then((k) =>
     k.json()
   )
   console.log(data)
