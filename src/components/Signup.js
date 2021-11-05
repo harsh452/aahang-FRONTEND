@@ -7,6 +7,8 @@ import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useHistory } from 'react-router-dom'
 import { firebaseAuth, firestore } from '../firebase';
 import cash from '../images/aahang-logo.png'
+import '../css/signup.css'
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -47,22 +49,22 @@ export default function Signup() {
             service_id: "",
             first_name: firstChange,
             fullName: firstChange + " " + lastChange,
-            gender:Gender
+            gender: Gender
         }).then(() => {
             for (var x = 0; x < userData.length; x++) {
                 firestore.collection('USERS').doc(firebaseAuth.getUid()).collection("USER_DATA").doc(userData[x]).set({ "list_size": 0 })
             }
-        }).then(()=>{
-            firestore.collection('USERS').doc(firebaseAuth.getUid()).collection("USER_DATA").doc('MY_ADDRESSES').set({ 
-                alternate_mobile_Number_1:'',
-                mobile_Number_1:'',
-                city_1:'',
-                state_1:'',
-                pincode_1:'',
-                name_1:firstChange,
-                flat_Number_1:'',
-                locality_1:'',
-                landmark_1:''
+        }).then(() => {
+            firestore.collection('USERS').doc(firebaseAuth.getUid()).collection("USER_DATA").doc('MY_ADDRESSES').set({
+                alternate_mobile_Number_1: '',
+                mobile_Number_1: '',
+                city_1: '',
+                state_1: '',
+                pincode_1: '',
+                name_1: firstChange,
+                flat_Number_1: '',
+                locality_1: '',
+                landmark_1: ''
             })
 
         })
@@ -83,13 +85,13 @@ export default function Signup() {
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value)
             senData()
-            k=1
+            k = 1
 
         } catch {
             setError('failed to crete account')
         }
         setLoading(false)
-        if(k){
+        if (k) {
             history.push("/home")
         }
 
@@ -99,8 +101,11 @@ export default function Signup() {
         <Dialog fullScreen open={true} TransitionComponent={Transition}>
 
             <Container style={{ textAlign: "center" }}>
-                <div className=" text-center mt-4" style={{ height: "500px", width: "950px", margin: "0 auto", padding: "20px", paddingTop: '90px' }}>
+                <div className="signup-cont text-center mt-4" style={{ height: "400px", margin: "0 auto", padding: "20px", paddingTop: '20px' }}>
                     <Row>
+                        <Col>
+                            <img style={{ width: '300px', marginTop: '50px' ,display:'inline-block'}} src={cash}></img>
+                        </Col>
                         <Col style={{ marginTop: "30px", padding: '30px', boxShadow: ' 0 10px 15px rgba(0,0,0,0.3)' }}>
                             <span>
                                 <h2 className="text-center mb-4">Sign Up</h2>
@@ -108,7 +113,7 @@ export default function Signup() {
                                 {error && <Alert variant="danger">{error}</Alert>}
 
                                 <Form onSubmit={handleSubmit} >
-                                    <Form.Row>
+                        
                                         <Form.Group style={{ marginRight: '10px' }}>
                                             <Form.Label>
                                                 First Name
@@ -125,14 +130,14 @@ export default function Signup() {
 
                                         </Form.Group>
 
-                                    </Form.Row>
+                                    
                                     <Form.Group>
                                         <Form.Label>Gender</Form.Label>
-                                        <Form.Control 
-                                        as = 'select'
-                                        defaultValue="MALE"
-                                        onChange={e =>setGender(e.target.value)}>
-                                        
+                                        <Form.Control
+                                            as='select'
+                                            defaultValue="MALE"
+                                            onChange={e => setGender(e.target.value)}>
+
                                             <option>FEMALE</option>
                                             <option>MALE</option>
                                         </Form.Control>
@@ -165,9 +170,7 @@ export default function Signup() {
                                 </div>
                             </span>
                         </Col>
-                        <Col>
-                            <img style={{ width: '350px', marginTop: '100px' }} src={cash}></img>
-                        </Col>
+
                     </Row>
 
                 </div>

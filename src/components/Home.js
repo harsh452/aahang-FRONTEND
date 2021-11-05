@@ -13,7 +13,7 @@ import { Row, Col, Card } from 'react-bootstrap';
 import { Link, BrowserRouter as Router } from 'react-router-dom';
 import Gridview from '../fargments/Gridview';
 import Stripadd from '../fargments/Stripadd';
-
+import '../css/Tab.css'
 
 
 
@@ -73,11 +73,12 @@ export class home extends Component {
 
         <Container>
           <Tabs
-            style={{marginLeft:'100px'}}
+          className='tab-cont'
+            // style={{marginLeft:'30px'}}
             value={this.state.value}
             onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="secondary"
+            indicatorColor="dark"
+            textColor="dark"
             variant="scrollable"
             scrollButtons="auto"
             aria-label="scrollable auto tabs example"
@@ -86,6 +87,7 @@ export class home extends Component {
             {this.props.category ? this.props.category.map((cat) => (
               console.log("hello"),
               <Tab
+              style={{float:'left'}}
                 icon={
                   <Categorytab
                     icon={cat.icon}

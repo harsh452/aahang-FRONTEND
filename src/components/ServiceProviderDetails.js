@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, {  useState, useEffect } from 'react'
 import Dialog from '@material-ui/core/Dialog';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -24,8 +24,29 @@ export const ServiceProviderDetails =(props) => {
   const history =useHistory({forceRefresh:true})
   const [price , setPrice] = useState(props.personDetails[5])
   const [error, setError] = useState('')
+  const [city, setcity] = React.useState('');
+  const [locality, setlocality] = React.useState('');
+  const [landmark, setLandmark] = React.useState('');
+  const [flat, setFlat] = React.useState('');
+  const [pincode, setPicode] = React.useState('');
+  const [state, setstate] = React.useState('');
 
+  useEffect(() => {
+    
+    firestore.collection('USERS').doc(firebaseAuth.getUid()).collection('USER_DATA').doc('MY_ADDRESSES').get().then((querrySnapshot) => {
+      let display_add;
 
+     display_add = querrySnapshot.data();
+     setFlat(display_add.flat_Number_1);
+     setPicode(display_add.pincode_1);
+     setlocality(display_add.locality_1);
+     setLandmark(display_add.landmark_1);
+     setcity(display_add.city_1)
+     setstate(display_add.state_1)
+   })
+ });
+
+  
 if(props.personDetails !== null ){
 
  async function handleClick(e) {
@@ -341,7 +362,8 @@ if(props.personDetails !== null ){
                          }}>
                            <h5>Your Address</h5><br></br>
                              <span>
-                              E-75 3rdc ,khetri ,Gothra,Rajasthan (333504)                              
+                              {flat} ,<br/>
+                               {city} , {locality} , <br/>{state} ({pincode})                              
                              </span>
                          </div></Col>
                       

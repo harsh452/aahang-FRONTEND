@@ -4,6 +4,7 @@ import {useAuth} from '../context/AuthContext'
 import { AppBar, Dialog, Slide, Toolbar, Typography } from '@material-ui/core';
 import {Link} from 'react-router-dom'
 import cash from '../images/aahang-logo.png'
+import '../css/signin.css'
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -46,9 +47,12 @@ export default function ForgotPassword() {
             </Toolbar>
           </AppBar> */}
           <Container style={{textAlign:"center"}}>
-         <div className=" text-center mt-4" style={{height:"500px",width:"800px",margin:"0 auto",padding:"20px",paddingTop:'90px'}}>
+         <div className="signin-cont text-center mt-4" style={{height:"500px",margin:"0 auto",padding:"20px",paddingTop:'50px'}}>
              <Row>
-                 <Col style={{marginTop:"30px",padding:'30px',boxShadow:' 0 10px 15px rgba(0,0,0,0.3)'}}>
+             <Col>
+                <img style={{width:'300px',marginTop:'50px'}} src={cash}></img>
+                 </Col>
+                 <Col style={{marginTop:"10px",padding:'30px',marginBottom:'20px',boxShadow:' 0 10px 15px rgba(0,0,0,0.3)'}}>
                  <span>
                   <h2 className="text-center mb-4">Password reset</h2>
                   
@@ -69,9 +73,7 @@ export default function ForgotPassword() {
              </div>
                  </span>   
                  </Col>
-                 <Col>
-                <img style={{width:'300px',marginTop:'50px'}} src={cash}></img>
-                 </Col>
+
              </Row>
                 
          </div>

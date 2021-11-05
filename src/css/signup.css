@@ -1,0 +1,17 @@
+
+@media only screen and (max-width: 600px) {
+    .signup-cont {
+      width:350px
+    }
+  }
+  @media only screen and (min-width: 600px) {
+    .signup-cont {
+      width:650px,
+      
+    }
+  }
+  @media only screen and (min-width: 992px) {
+    .signup-cont {
+      width:900px;
+    }
+  }

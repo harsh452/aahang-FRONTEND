@@ -3,7 +3,7 @@ import Header from './Header'
 import Home from './Home'
 import ServiceProvider from './ServiceProvider'
 import { BrowserRouter as Router } from 'react-router-dom';
-import Videobanner from './Videobanner';
+import Topbanner from './Topbanner';
 import Footer from './Footer';
 
 
@@ -12,7 +12,7 @@ export class Mainhome extends Component {
         return (
             <div>
              <Header  />
-             <Videobanner/>
+             <Topbanner/>
              <Home />
              <Footer/>
             </div>

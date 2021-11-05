@@ -493,7 +493,7 @@ export class ServiceProvider extends Component {
           {console.log(this.state.barValue)
           }
           <Row>
-            <Col md={3} style={{ textAlign: 'center', padding: '25px' }}>
+            <Col lg={3} md={12} style={{ textAlign: 'center', padding: '25px' }}>
             <div style={{ marginTop: '20px'}}>
 
               <h5><img style={{ height: '30px', width: '30px' }} src={filter}></img> filter</h5><br></br>
