@@ -26,7 +26,7 @@ export class Gridview extends Component {
         return (
             <Router>
 
-                <Col style={{ width: "80%" }} sm>
+                <Col style={{ width: "100%" }} sm>
 
 
                     <Link to={"/home/service/" + card.title} style={{textDecoration:"none", color:"black"}} onClick={e => {
@@ -47,7 +47,7 @@ export class Gridview extends Component {
 
 
                     }}>
-                        <Card className="image" key={index} style={{ width: "70%",height:'250px' }}>
+                        <Card className="image" key={index} style={{height:'250px' }}>
                             <Card.Img variant="top" src={card.element} style={{height: "200px", width: "90%"}} />
                         
                               <h5 className='head'> {card.title}</h5><br/>

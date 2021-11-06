@@ -10,8 +10,8 @@ import Paper from '@material-ui/core/Paper';
 import { firestore, firebaseAuth } from '../firebase';
 import { Alert, Button, Container } from 'react-bootstrap'
 import Avatar from '@material-ui/core/Avatar';
-import { Box, Card, CardActions, CardContent, CardMedia, Drawer, Typography } from '@material-ui/core';
-
+import { Box, Card, CardActions, CardContent, CardMedia, Drawer, FilledInput, Typography } from '@material-ui/core';
+import file from '../images/file.png'
 
 let profileimage;
 let providerName;
@@ -200,7 +200,7 @@ export class PayementSuccessful extends Component {
     }
 
     this.setState({ open: openDrawer });
-    console.log(this.state.address);
+    console.log(this.state.address['flat_Number_1']);
   };
 
   list = (anchor) => (
@@ -211,56 +211,80 @@ export class PayementSuccessful extends Component {
       onKeyDown={this.toggleDrawer(anchor, false)}
     >
       {() => {
-        if (this.state.address == null) {
-          return <div style={{ backgroundColor: 'red', height: '200px' }}>
-            harsh
-        </div>
-        } else {
+        if (this.state.address['flat_Number_1']) {
           return <div style={{ width: '300px', marginTop: '100px' }}>
-            <Card sx={{ maxWidth: 245, padding: '20px' }}>
-              <CardMedia
-                component="img"
-                height="inherit"
-                image={profileimage}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {
-                    providerName
-                  }    <br></br> Your address   </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Name - {this.state.address.name_1}<br />
-                  State - {this.state.address.state_1}<br />
-                  City - {this.state.address.city_1}<br />
-                  Locality - {this.state.address.locality_1}<br />
-                  Landmark - {this.state.address.landmark_1}<br />
-                  Pincode - {this.state.address.pincode_1}<br />
-                  Flat Address - {this.state.address.flat_Number_1}<br />
-                  Mobile No. - {this.state.address.mobile_Number_1}<br />
-                  Alternate Mobile No. - {this.state.address.alternate_mobile_Number_1}
+          <Card sx={{ maxWidth: 245, padding: '20px' }}>
+            <CardMedia
+              component="img"
+              height="inherit"
+              image={profileimage}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {
+                  providerName
+                }    <br></br> Your address   </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Name - {this.state.address.name_1}<br />
+                State - {this.state.address.state_1}<br />
+                City - {this.state.address.city_1}<br />
+                Locality - {this.state.address.locality_1}<br />
+                Landmark - {this.state.address.landmark_1}<br />
+                Pincode - {this.state.address.pincode_1}<br />
+                Flat Address - {this.state.address.flat_Number_1}<br />
+                Mobile No. - {this.state.address.mobile_Number_1}<br />
+                Alternate Mobile No. - {this.state.address.alternate_mobile_Number_1}
 
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button variant="warning" size="small" onClick={
-                  () => {
-                    firestore.collection('USERS').doc(firebaseAuth.getUid()).collection('USER_ORDERS').doc().set({
-                      order_id: '12175835' + Math.random() * 100,
-                      pay_id: '35463432' + Math.random() * 100,
-                      pay_mode: 'Offline',
-                      photo: profileimage,
-                      pro_name: providerName
-                    }).then(() => {
-                      alert('ORDER CONFIRMED PLEASE VISIT ORDER HISTORY FOR MORE INFO')
-                    })
-                  }
-                }>CONFIRM</Button>
-                <Button href="/ProfileUpdate" variant="warning" size="small">CHANGE ADDRESS</Button>
-              </CardActions>
-            </Card>
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button variant="warning" size="small" onClick={
+                () => {
+                  firestore.collection('USERS').doc(firebaseAuth.getUid()).collection('USER_ORDERS').doc().set({
+                    order_id: '12175835' + Math.random() * 100,
+                    pay_id: '35463432' + Math.random() * 100,
+                    pay_mode: 'Offline',
+                    photo: profileimage,
+                    pro_name: providerName
+                  }).then(() => {
+                    alert('ORDER CONFIRMED PLEASE VISIT ORDER HISTORY FOR MORE INFO')
+                  })
+                }
+              }>CONFIRM</Button>
+              <Button href="/ProfileUpdate" variant="warning" size="small">CHANGE ADDRESS</Button>
+            </CardActions>
+          </Card>
 
-          </div>
+        </div>
 
+          
+        } else {
+          
+          return <div style={{  width:'300px'}}>
+          <Card sx={{ maxWidth: 245, padding: '20px' }}>
+           <CardMedia
+             component="img"
+             height="inherit"
+             image={profileimage}
+           />
+           <CardContent>
+             <Typography gutterBottom variant="h5" component="div">
+               {
+                 providerName
+               }    <br></br> Your address   </Typography>
+         
+         <CardMedia
+             component="img"
+             height="inherit"
+             image={file}
+           />
+           </CardContent>
+           <CardActions>
+          
+             <Button href="/ProfileUpdate" variant="warning" size="small">ADD ADDRESS</Button>
+           </CardActions>
+         </Card>
+     </div>
         }
       }}
 
